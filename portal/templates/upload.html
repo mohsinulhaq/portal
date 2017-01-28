@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Upload{% endblock %}
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fileinput.min.css') }}">
+{% endblock %}
+{% block body %}
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" class="file" name="file" accept="application/pdf, .docx">
+  </form>
+{% endblock %}
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/fileinput.min.js') }}"></script>
+{% endblock %}

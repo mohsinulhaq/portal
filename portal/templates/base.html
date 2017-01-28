@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> {% block title %}{% endblock %} | E-Resource Portal</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <style>
+    body {
+      background-color: #f4f4f4;
+    }
+    .pointer {
+      cursor: pointer;
+    }
+  </style>
+  {% block styles %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Portal</a>
+    <ul class="nav navbar-nav navbar-right pointer" style="float:right;">
+      {% if current_user.is_authenticated %}
+        <li><a><i class="glyphicon glyphicon-user"></i> {{ current_user.email }}</a></li>
+        <li><a href="{{ url_for('logout') }}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+      {% else %}
+        <li><a data-toggle="modal" data-target="#modal"><i class="glyphicon glyphicon-log-in"></i> Register / Log In</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Register/Log In</h4>
+      </div>
+      <form data-register={{ url_for('register') }} data-login={{ url_for('login') }} id="form" method="post">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off"
+                   value="{{ email }}"
+                   required>
+          </div>
+          <div class="alert alert-info text-center" id="email-not-used" style="display: none; color: lightseagreen;">
+            Email not in use.
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password" minlength="6" required>
+          </div>
+          <div class="text-center">
+            <div class="form-group" id="remember" style="display: none;">
+              <label><input type="checkbox" name="remember"> Remember me</label>
+            </div>
+            <div class="form-group">
+              <a href="{{ url_for('forgot') }}">Forgot Password</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="submit" disabled>Register / Log In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul style="list-style: none;">
+        {% for category, message in messages %}
+          <li class="alert alert-{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  {% block body %}{% endblock %}
+</div>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script>
+    $('.nav-tabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show')
+    });
+    $('#email').keyup(function (e) {
+        if (!$(this).val().length) {
+            $('#email-not-used').hide();
+            return;
+        }
+        $.getJSON({
+            url: '/get_reg',
+            data: {'email': $('#email').val().trim()},
+            success: function (response) {
+                if (response) {
+                    $('#email-not-used').hide();
+                    $('#remember').show();
+                    $('#submit').text('Log In');
+                    $('#form').attr('action', $('#form').data('login'));
+                } else {
+                    $('#email-not-used').show();
+                    $('#remember').hide();
+                    $('#submit').text('Register');
+                    $('#form').attr('action', $('#form').data('register'));
+                }
+                $('#submit').prop('disabled', false);
+            },
+            error: function (err) {
+                if (err.status < 200 || err.status > 303) {
+                    alert(err.statusText);
+                }
+            }
+        });
+    });
+</script>
+{% block scripts %} {% endblock %}
+</body>
+</html>

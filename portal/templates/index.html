@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+  <div class="container">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active"><a href="#1" data-toggle="tab">1st Semester</a></li>
+      <li><a href="#2" data-toggle="tab">2nd Semester</a></li>
+      <li><a href="#3" data-toggle="tab">3rd Semester</a></li>
+      <li><a href="#4" data-toggle="tab">4th Semester</a></li>
+      <li><a href="#5" data-toggle="tab">5th Semester</a></li>
+      <li><a href="#6" data-toggle="tab">6th Semester</a></li>
+      <li><a href="#7" data-toggle="tab">7th Semester</a></li>
+      <li><a href="#8" data-toggle="tab">8th Semester</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="1">
+        <ul class="list-group text-center">
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=1, subject='PHY') }}">Physics</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=1, subject='PHY') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=1, subject='CHM') }}">Chemistry</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=1, subject='CHM') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=1, subject='MTH') }}">Mathematics</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=1, subject='MTH') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="2">
+        <ul class="list-group text-center">
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=2, subject='CPR') }}">C Programming</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=2, subject='CPR') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=2, subject='EMC') }}">Engineering Mechanics</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=2, subject='EMC') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=2, subject='MDR') }}">Machine Drawing</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=2, subject='MDR') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="3">
+        <ul class="list-group text-center">
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=3, subject='OOP') }}">Object Oriented Programming</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=3, subject='OOP') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=3, subject='IWD') }}">Internet & Web Technologies</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=3, subject='IWD') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=3, subject='DMT') }}">Discrete Mathematics</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=3, subject='DMT') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="4">
+        <ul class="list-group text-center">
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=4, subject='DST') }}">Data Structures</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=4, subject='DST') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=4, subject='DEL') }}">Digital Electronics</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=4, subject='DEL') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=4, subject='SEN') }}">Software Engineering</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=4, subject='SEN') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="5">
+        <ul class="list-group text-center">
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=5, subject='ALG') }}">Algorithms</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=5, subject='ALG') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=5, subject='COA') }}">Computer Organization & Architecture</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=5, subject='COA') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=5, subject='MPR') }}">Microprocessor</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=5, subject='MPR') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="6">
+        <ul class="list-group text-center">
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=6, subject='AIN') }}">Artificial Intelligence</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=6, subject='AIN') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=6, subject='JAV') }}">Java Programming</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=6, subject='JAV') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=6, subject='CNT') }}">Computer Networks</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=6, subject='CNT') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="7">
+        <ul class="list-group text-center">
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=7, subject='CPD') }}">Compiler Design</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=7, subject='CPD') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=7, subject='NSC') }}"">Network Security</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=7, subject='NSC') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=7, subject='WDV') }}">Web Development</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=7, subject='WDV') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="8">
+        <ul class="list-group text-center">
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=8, subject='PRJ') }}">Project</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=8, subject='PRJ') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=8, subject='BDT') }}">Big Data</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=8, subject='BDT') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <a href="{{ url_for('download', semester=8, subject='IOM') }}">Industrial Organization & Management</a>
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('upload', semester=8, subject='IOM') }}" style="float:right;"><i
+                  class="glyphicon glyphicon-cloud-upload"></i></a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}
