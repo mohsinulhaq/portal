@@ -154,6 +154,7 @@ def upload(semester, subject):
             if not os.path.exists(path):
                 os.makedirs(path)
             file.save(os.path.join(path, filename))
+            flash('File upload successful.', 'success')
             return redirect(url_for('index'))
     return render_template('upload.html')
 
