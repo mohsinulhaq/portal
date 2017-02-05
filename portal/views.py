@@ -1,7 +1,7 @@
 import os
 from . import app, db, login_manager, serializer, mail
 from .models import User
-from flask import render_template, request, jsonify, url_for, flash, redirect,\
+from flask import render_template, request, jsonify, url_for, flash, redirect, \
     send_file
 from flask_mail import Message
 from flask_login import login_user, login_required, logout_user
